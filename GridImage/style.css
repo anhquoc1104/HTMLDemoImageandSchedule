@@ -1,0 +1,54 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.schedule {
+    display: inline-block;
+    margin-top: 50px;
+}
+
+.button {
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+}
+
+.layout__button {
+    background-color: #efd;
+    color: #222;
+}
+
+.schedule__button {
+    background-color: #0d7aee;
+    border-radius: 5px;
+    padding: 10px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.button__send,
+.button__opt {
+    padding: 10px;
+}
+
+.button__opt {
+    border-left: 2px solid #777;
+}
