@@ -1,3 +1,7 @@
+:root {
+    --font-size-nomal: 15px;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -12,6 +16,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    font-size: var(--font-size-nomal);
 }
 .container {
     display: flex;

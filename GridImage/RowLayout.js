@@ -1,27 +1,33 @@
 let $ = document.querySelector.bind(document);
 
-function getRandomSize(min, max) {
+const getRandomSize = function (min, max) {
     return Math.round(Math.random() * (max - min) + min);
-}
+};
 
-let allImages = "";
+const getRandomZeroToX = function (x) {
+    return Math.floor(Math.random() * x);
+};
 
-for (let i = 0; i < 12; i++) {
-    let width = getRandomSize(200, 400);
-    let height = getRandomSize(200, 400);
-    allImages += `<div class="image"><img class="imgLazy" loading="lazy" src="https://picsum.photos/${width}/${height}?random=1" /><div class="img__title"></div></div>`;
-}
+const TITLE = [
+    "short title",
+    "something example long title for product, detail and evething, very long long long long long long long long long",
+    "medium title for product",
+];
 
-$("#photos").innerHTML = allImages;
+const loadImage = function () {
+    let $photos = $("#photos");
+    for (let i = 0; i < 12; i++) {
+        let width = getRandomSize(200, 400);
+        let height = getRandomSize(200, 400);
+        let numRandom = getRandomZeroToX(2);
 
-document.querySelectorAll(".item img").forEach((img) => {
-    // Ideally, we would know the image size or aspect ratio beforehand...
-    if (img.naturalHeight) {
-        setItemRatio.call(img);
-    } else {
-        img.addEventListener("load", setItemRatio);
+        let node = `<div class="image"><img class="imgLazy" loading="lazy" src="https://picsum.photos/${width}/${height}?random=1" /><div class="img__title">${TITLE[numRandom]}</div></div>`;
+
+        $photos.insertAdjacentHTML("beforeend", node);
     }
-});
+};
+
+loadImage();
 
 function setItemRatio() {
     this.parentNode.style.setProperty(
@@ -29,3 +35,12 @@ function setItemRatio() {
         this.naturalHeight / this.naturalWidth
     );
 }
+
+Array.from(document.querySelectorAll(".image img")).map((img) => {
+    // Ideally, we would know the image size or aspect ratio beforehand...
+    if (img.naturalHeight) {
+        setItemRatio.call(img);
+    } else {
+        img.addEventListener("load", setItemRatio);
+    }
+});

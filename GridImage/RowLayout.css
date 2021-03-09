@@ -5,17 +5,25 @@
     --ratio: 1; /* Default aspect ratio for photos that are not loaded yet */
 }
 
-.imgLazy {
+#photos .image {
+    border: 1px solid #eee;
     flex: calc(var(--height) / var(--ratio));
     min-width: calc(var(--height) / var(--ratio) * 1px);
     margin: 2px;
-    font-size: 0;
+    cursor: pointer;
 }
 
-.imgLazy img {
+#photos .image img {
+    /* Just in case there are inline attributes */
+    margin: 2px;
     width: 100%;
 }
 
-.placeholder {
-    flex-grow: 99999;
+.img__title {
+    line-height: calc(var(--font-size-nomal) + 5px);
+    padding: 0 5px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
 }
